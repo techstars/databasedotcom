@@ -62,7 +62,7 @@ module Databasedotcom
     # DATABASEDOTCOM_DEBUGGING, DATABASEDOTCOM_VERSION, DATABASEDOTCOM_SOBJECT_MODULE, DATABASEDOTCOM_CA_FILE, and/or
     # DATABASEDOTCOM_VERIFY_MODE are present, they override any other values provided
     def initialize(options = {})
-      if options.is_a?(String)
+      if options.is_a?(String) and (File.exists?(options) ? YAML.load_file(options) : nil)
         @options = YAML.load_file(options)
         @options["verify_mode"] = @options["verify_mode"].constantize if @options["verify_mode"] && @options["verify_mode"].is_a?(String)
       else
