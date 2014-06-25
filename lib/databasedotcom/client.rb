@@ -68,7 +68,7 @@ module Databasedotcom
       else
         @options = options
       end
-      @options.symbolize_keys!
+      @options = @options.symbolize_keys
 
       if ENV['DATABASE_COM_URL']
         url = URI.parse(ENV['DATABASE_COM_URL'])
